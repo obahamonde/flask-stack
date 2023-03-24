@@ -5,10 +5,6 @@ name = "pypi"
 
 [packages]
 pydantic = {extras = ["dotenv", "email"], version = "*"}
-google-api-python-client = "*"
-google-auth-httplib2 = "*"
-google-auth-oauthlib = "*"
-bs4 = "*"
 gunicorn = "*"
 flask = {extras = ["async"], version = "*"}
 celery = {extras = ["redis"], version = "*"}
