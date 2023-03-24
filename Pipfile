@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pydantic = {extras = ["dotenv", "email"], version = "*"}
+google-api-python-client = "*"
+google-auth-httplib2 = "*"
+google-auth-oauthlib = "*"
+bs4 = "*"
+gunicorn = "*"
+flask = {extras = ["async"], version = "*"}
+celery = {extras = ["redis"], version = "*"}
+redis = "*"
+minio = "*"
+
+[dev-packages]
+pytest = "*"
+black = "*"
+
+[requires]
+python_version = "3.8"
