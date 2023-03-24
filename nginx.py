@@ -1,3 +1,4 @@
+import os
 paths = [
     "/etc/nginx/conf.d/",
     "/etc/nginx/sites-enabled/",
@@ -27,5 +28,5 @@ if __name__ == "__main__":
     for path in paths:
         with open(path+domain+".conf","w") as f:
             f.write(nginx_conf)
-            
+    os.system("sudo nginx -s reload")   
     print("Done!")
