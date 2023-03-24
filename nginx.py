@@ -28,5 +28,7 @@ if __name__ == "__main__":
     for path in paths:
         with open(path+domain+".conf","w") as f:
             f.write(nginx_conf)
-    os.system("sudo nginx -s reload")   
+    os.system("sudo nginx -t")
+    os.system("sudo nginx -s reload")
+    os.system("sudo systemctl restart nginx")  
     print("Done!")
