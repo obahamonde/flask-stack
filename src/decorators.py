@@ -7,7 +7,7 @@ from celery import Celery
 
 worker = Celery(__name__, broker="amqp://guest:guest@localhost:5672//")
 
-redis = red.Redis(host="cache", port=6379, db=0, decode_responses=True,encoding_errors="ignore")
+redis = red.Redis(host="cache", port=6379, db=0, decode_responses=True,encoding_errors="ignore", charset="utf-8")
 
 def cache(ttl:int=3600):
     def decorator(func):
@@ -24,5 +24,8 @@ def cache(ttl:int=3600):
 
 def task(func):
     """Decorator for registering a function as a task."""
-    worker.task(func)
-    return func
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        worker.send_task(func.__name__, args=args, kwargs=kwargs)
+    return wrapper
+    
